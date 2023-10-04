@@ -1,0 +1,95 @@
+WindowManager:
+    MainWindow:
+    SecondWindow:
+
+<MainWindow>:
+    name: "main"
+
+    BoxLayout:
+        size: self.parent.size  # important!
+        pos: self.parent.pos  # important!
+        orientation: "vertical"
+        canvas.before:
+            Color:
+                rgba: (1,1,1,1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        padding: [20,20,20,20]
+        spacing:0
+
+        Image:
+            source:'logo.png'
+        Image:
+            source:'6.png'
+
+
+
+        Button:
+            size_hint: None, None
+            size: 210,75
+            #background_color: 0.5,0.5,1,1
+            background_normal: 'select.png'
+            pos: root.width/2-100,root.height/2-50
+            markup: True
+            pos_hint: {'center_x' :0.5}
+            on_release: app.open_filemanager()
+
+
+        Button:
+            size_hint: None, None
+            size: 210,75
+            #background_color: 0.5,0.5,1,1
+            background_normal: 'calculate.png'
+            pos: root.width/2-100,root.height/2-50
+            markup: True
+            pos_hint: {'center_x' :0.5}
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "left"
+
+        Button:
+            size_hint: None, None
+            size: 210,75
+            #background_color: 0.5,0.5,1,1
+            background_normal: 'classify.png'
+            pos: root.width/2-100,root.height/2-50
+            markup: True
+            pos_hint: {'center_x' :0.5}
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "left"
+        Button:
+            size_hint: None, None
+            size: 210,75
+            #background_color: 0.5,0.5,1,1
+            background_normal: 'clear.png'
+            pos: root.width/2-100,root.height/2-50
+            markup: True
+            pos_hint: {'center_x' :0.5}
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "left"
+
+        Button:
+            size_hint: None, None
+            size: 210,75
+            #background_color: 0.5,0.5,1,1
+            background_normal: 'exit.png'
+            pos: root.width/2-100,root.height/2-50
+            markup: True
+            pos_hint: {'center_x' :0.5}
+            on_release: app.show_alert()
+
+
+
+<SecondWindow>:
+    name: "second"
+
+    Button:
+        text: "BLANK"
+        background_color: 0,0,1,1
+        font_size: 32
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
